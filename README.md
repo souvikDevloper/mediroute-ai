@@ -185,7 +185,7 @@ Databricks run summary:
 ## Planner workflow
 
 <p align="center">
-  <img src="assets/github/planner_workflow.png" alt="MediRoute AI planner workflow" width="85%" />
+  <img src="assets/github/planner-workflow-v2.png" alt="MediRoute AI planner workflow" width="85%" />
 </p>
 
 Example output style:
