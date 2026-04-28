@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/github/hero.svg" alt="MediRoute AI hero banner" width="100%" />
+  <img src="assets/github/hero.png" alt="MediRoute AI hero banner" width="100%" />
 </p>
 
 <p align="center">
@@ -115,7 +115,7 @@ The product produces:
 ## Databricks architecture
 
 <p align="center">
-  <img src="assets/github/architecture.svg" alt="MediRoute AI Databricks architecture" width="100%" />
+  <img src="assets/github/architecture.png" alt="MediRoute AI Databricks architecture" width="100%" />
 </p>
 
 MediRoute AI uses Databricks as the Lakehouse backbone:
@@ -162,7 +162,7 @@ MLflow / Delta trace + Streamlit dashboard
 ## Results from the official dataset
 
 <p align="center">
-  <img src="assets/github/metrics.svg" alt="MediRoute AI Databricks run metrics" width="100%" />
+  <img src="assets/github/metrics.png" alt="MediRoute AI Databricks run metrics" width="100%" />
 </p>
 
 Databricks run summary:
@@ -185,7 +185,7 @@ Databricks run summary:
 ## Planner workflow
 
 <p align="center">
-  <img src="assets/github/planner_workflow.svg" alt="MediRoute AI planner workflow" width="85%" />
+  <img src="assets/github/planner_workflow.png" alt="MediRoute AI planner workflow" width="85%" />
 </p>
 
 Example output style:
