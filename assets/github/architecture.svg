@@ -1,69 +1,101 @@
-<svg width="1400" height="900" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
-<defs>
-  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#090E18"/><stop offset="1" stop-color="#0D213A"/></linearGradient>
-  <filter id="glow"><feGaussianBlur stdDeviation="35" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-  <style>
-    .title { font: 800 68px Arial, sans-serif; fill: #fff; }
-    .h1 { font: 800 44px Arial, sans-serif; fill: #fff; }
-    .h2 { font: 700 26px Arial, sans-serif; fill: #fff; }
-    .body { font: 400 21px Arial, sans-serif; fill: #C7D3E4; }
-    .small { font: 400 16px Arial, sans-serif; fill: #AAB8CC; }
-    .mono { font: 600 16px 'Courier New', monospace; fill: #C4E2FF; }
-    .metric { font: 800 42px Arial, sans-serif; fill: #fff; }
-    .label { font: 700 18px Arial, sans-serif; fill: #7EE1FF; }
-  </style>
-</defs>
-<rect width="1400" height="900" fill="url(#bg)"/>
-<circle cx="1036" cy="90" r="210" fill="#FF4757" opacity="0.18" filter="url(#glow)"/>
-<circle cx="1204" cy="702" r="280" fill="#00C2FF" opacity="0.10" filter="url(#glow)"/>
-<text x="70" y="90" class="h1">Databricks-native architecture</text>
-<text x="72" y="130" class="body">Bronze/Silver/Gold Lakehouse pipeline with MLflow trace and planner-ready RAG documents</text>
-<rect x="120" y="180" width="540" height="74" rx="18" fill="#233450" stroke="#6E82A5"/>
-<text x="144" y="210" class="h2" style="font-size:23px">Official VF Ghana CSV</text>
-<text x="144" y="237" class="small" style="fill:#DCE6F2">Raw facility records, schema fields, messy notes</text>
-<line x1="390.0" y1="254" x2="390.0" y2="278" stroke="#7EE1FF" stroke-width="3"/><polygon points="383.0,276 397.0,276 390.0,288" fill="#7EE1FF"/>
-<rect x="120" y="278" width="540" height="74" rx="18" fill="#1E4A6E" stroke="#6E82A5"/>
-<text x="144" y="308" class="h2" style="font-size:23px">Bronze Delta</text>
-<text x="144" y="335" class="small" style="fill:#DCE6F2">bronze_facility_raw — raw table with cleaned column names</text>
-<line x1="390.0" y1="352" x2="390.0" y2="376" stroke="#7EE1FF" stroke-width="3"/><polygon points="383.0,374 397.0,374 390.0,386" fill="#7EE1FF"/>
-<rect x="120" y="376" width="540" height="74" rx="18" fill="#1C5B74" stroke="#6E82A5"/>
-<text x="144" y="406" class="h2" style="font-size:23px">Silver Delta</text>
-<text x="144" y="433" class="small" style="fill:#DCE6F2">silver_facility_clean — normalized fields and combined notes</text>
-<line x1="390.0" y1="450" x2="390.0" y2="474" stroke="#7EE1FF" stroke-width="3"/><polygon points="383.0,472 397.0,472 390.0,484" fill="#7EE1FF"/>
-<rect x="120" y="474" width="540" height="74" rx="18" fill="#3D397D" stroke="#6E82A5"/>
-<text x="144" y="504" class="h2" style="font-size:23px">IDP Extraction Agent</text>
-<text x="144" y="531" class="small" style="fill:#DCE6F2">Extracts procedure, equipment, capability, specialties + row evidence</text>
-<line x1="390.0" y1="548" x2="390.0" y2="572" stroke="#7EE1FF" stroke-width="3"/><polygon points="383.0,570 397.0,570 390.0,582" fill="#7EE1FF"/>
-<rect x="120" y="572" width="540" height="74" rx="18" fill="#573778" stroke="#6E82A5"/>
-<text x="144" y="602" class="h2" style="font-size:23px">Claim Verification Agent</text>
-<text x="144" y="629" class="small" style="fill:#DCE6F2">Flags Verified / Incomplete / Suspicious facility claims</text>
-<line x1="390.0" y1="646" x2="390.0" y2="670" stroke="#7EE1FF" stroke-width="3"/><polygon points="383.0,668 397.0,668 390.0,680" fill="#7EE1FF"/>
-<rect x="120" y="670" width="540" height="74" rx="18" fill="#803750" stroke="#6E82A5"/>
-<text x="144" y="700" class="h2" style="font-size:23px">Risk Scoring Engine</text>
-<text x="144" y="727" class="small" style="fill:#DCE6F2">Scores facility and region/location-cluster medical desert risk</text>
-<line x1="390.0" y1="744" x2="390.0" y2="768" stroke="#7EE1FF" stroke-width="3"/><polygon points="383.0,766 397.0,766 390.0,778" fill="#7EE1FF"/>
-<rect x="120" y="768" width="540" height="74" rx="18" fill="#A7444E" stroke="#6E82A5"/>
-<text x="144" y="798" class="h2" style="font-size:23px">Gold Intelligence Tables</text>
-<text x="144" y="825" class="small" style="fill:#DCE6F2">gold_facility_intelligence, gold_region_risk, gold_claim_verification</text>
-<line x1="390.0" y1="842" x2="390.0" y2="866" stroke="#7EE1FF" stroke-width="3"/><polygon points="383.0,864 397.0,864 390.0,876" fill="#7EE1FF"/>
-<rect x="120" y="866" width="540" height="74" rx="18" fill="#FF4757" stroke="#6E82A5"/>
-<text x="144" y="896" class="h2" style="font-size:23px">Planner + Dashboard</text>
-<text x="144" y="923" class="small" style="fill:#DCE6F2">Ask Agent, map, evidence trace, RAG-ready gold_rag_documents</text>
-<rect x="760" y="185" width="560" height="190" rx="24" fill="#0D1524" stroke="#465A82"/>
-<text x="788" y="250" class="h2" style="font-size:30px">Gold Delta outputs</text>
-<text x="796" y="285" class="mono">• gold_idp_extracted_facts</text>
-<text x="796" y="309" class="mono">• gold_claim_verification</text>
-<text x="796" y="333" class="mono">• gold_facility_intelligence</text>
-<text x="796" y="357" class="mono">• gold_region_risk</text>
-<text x="796" y="381" class="mono">• gold_rag_documents</text>
-<text x="796" y="405" class="mono">• gold_agent_trace_summary</text>
-<rect x="760" y="420" width="560" height="200" rx="24" fill="#0D1524" stroke="#465A82"/>
-<text x="788" y="485" class="h2" style="font-size:30px">Why this is not just RAG</text>
-<text x="796" y="525" class="body" style="fill:#7EE1FF">✓ Structured IDP extraction before retrieval</text>
-<text x="796" y="555" class="body" style="fill:#7EE1FF">✓ Deterministic evidence rules for claim checks</text>
-<text x="796" y="585" class="body" style="fill:#7EE1FF">✓ Risk scoring before planner answers</text>
-<text x="796" y="615" class="body" style="fill:#7EE1FF">✓ Row-level evidence and trace tables</text>
-<rect x="760" y="665" width="560" height="150" rx="24" fill="#0D1524" stroke="#FF4757"/>
-<text x="788" y="730" class="h2" style="font-size:30px">Core loop</text>
-<text x="794" y="775" style="font:800 25px Arial,sans-serif;fill:#FF6E7D">Extract → Verify → Score → Recommend → Cite</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#06111f"/>
+      <stop offset="55%" stop-color="#07182a"/>
+      <stop offset="100%" stop-color="#0b2740"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+    <style>
+      .title { font-family: Inter, Segoe UI, Arial, sans-serif; font-size: 48px; font-weight: 800; fill: #ffffff; }
+      .subtitle { font-family: Inter, Segoe UI, Arial, sans-serif; font-size: 21px; fill: #dbeafe; }
+      .box-title { font-family: Inter, Segoe UI, Arial, sans-serif; font-size: 23px; font-weight: 800; fill: #ffffff; }
+      .box-text { font-family: Inter, Segoe UI, Arial, sans-serif; font-size: 16px; fill: #dbeafe; }
+      .panel-title { font-family: Inter, Segoe UI, Arial, sans-serif; font-size: 31px; font-weight: 800; fill: #ffffff; }
+      .bullet { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 17px; fill: #dbeafe; }
+      .cyan { fill: #67e8f9; }
+      .pink { fill: #ff5b78; }
+      .arrow { stroke: #67e8f9; stroke-width: 4; stroke-linecap: round; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="980" fill="url(#bg)"/>
+  <circle cx="1180" cy="60" r="230" fill="#7f1d46" opacity="0.35"/>
+  <circle cx="1380" cy="785" r="360" fill="#06b6d4" opacity="0.16"/>
+
+  <text x="80" y="70" class="title">Databricks-native architecture</text>
+  <text x="80" y="113" class="subtitle">Bronze/Silver/Gold Lakehouse pipeline with MLflow trace and planner-ready RAG documents</text>
+
+  <!-- Left pipeline -->
+  <g filter="url(#shadow)">
+    <rect x="130" y="170" width="560" height="74" rx="18" fill="#20385b" stroke="#5b78a8" stroke-width="2"/>
+    <text x="158" y="202" class="box-title">Official VF Ghana CSV</text>
+    <text x="158" y="226" class="box-text">Raw facility records, schema fields, messy notes</text>
+
+    <line x1="410" y1="244" x2="410" y2="270" class="arrow"/>
+
+    <rect x="130" y="270" width="560" height="74" rx="18" fill="#185178" stroke="#4e8fbb" stroke-width="2"/>
+    <text x="158" y="302" class="box-title">Bronze Delta</text>
+    <text x="158" y="326" class="box-text">bronze_facility_raw — raw table with cleaned column names</text>
+
+    <line x1="410" y1="344" x2="410" y2="370" class="arrow"/>
+
+    <rect x="130" y="370" width="560" height="74" rx="18" fill="#1b6678" stroke="#52a8b8" stroke-width="2"/>
+    <text x="158" y="402" class="box-title">Silver Delta</text>
+    <text x="158" y="426" class="box-text">silver_facility_clean — normalized fields and combined notes</text>
+
+    <line x1="410" y1="444" x2="410" y2="470" class="arrow"/>
+
+    <rect x="130" y="470" width="560" height="74" rx="18" fill="#3f3b8b" stroke="#7c73d2" stroke-width="2"/>
+    <text x="158" y="502" class="box-title">IDP Extraction Agent</text>
+    <text x="158" y="526" class="box-text">Extracts procedure, equipment, capability, specialties + row evidence</text>
+
+    <line x1="410" y1="544" x2="410" y2="570" class="arrow"/>
+
+    <rect x="130" y="570" width="560" height="74" rx="18" fill="#5a347d" stroke="#a05fd0" stroke-width="2"/>
+    <text x="158" y="602" class="box-title">Claim Verification Agent</text>
+    <text x="158" y="626" class="box-text">Flags verified, incomplete, and suspicious facility claims</text>
+
+    <line x1="410" y1="644" x2="410" y2="670" class="arrow"/>
+
+    <rect x="130" y="670" width="560" height="74" rx="18" fill="#87344f" stroke="#c95a78" stroke-width="2"/>
+    <text x="158" y="702" class="box-title">Risk Scoring Engine</text>
+    <text x="158" y="726" class="box-text">Scores facility and region/location-cluster medical desert risk</text>
+
+    <line x1="410" y1="744" x2="410" y2="770" class="arrow"/>
+
+    <rect x="130" y="770" width="560" height="74" rx="18" fill="#b23e4c" stroke="#ff6b7c" stroke-width="2"/>
+    <text x="158" y="802" class="box-title">Gold Intelligence Tables</text>
+    <text x="158" y="826" class="box-text">gold_facility_intelligence, gold_region_risk, gold_claim_verification</text>
+
+    <line x1="410" y1="844" x2="410" y2="870" class="arrow"/>
+
+    <rect x="130" y="870" width="560" height="74" rx="18" fill="#ff4864" stroke="#ff8093" stroke-width="2"/>
+    <text x="158" y="902" class="box-title">Planner + Dashboard</text>
+    <text x="158" y="926" class="box-text">Evidence-backed recommendations for non-technical planners</text>
+  </g>
+
+  <!-- Right panels -->
+  <g filter="url(#shadow)">
+    <rect x="800" y="175" width="630" height="205" rx="22" fill="#071121" stroke="#40587e" stroke-width="2"/>
+    <text x="835" y="230" class="panel-title">Gold Delta outputs</text>
+    <text x="850" y="270" class="bullet">• gold_idp_extracted_facts</text>
+    <text x="850" y="300" class="bullet">• gold_claim_verification</text>
+    <text x="850" y="330" class="bullet">• gold_facility_intelligence</text>
+    <text x="850" y="360" class="bullet">• gold_region_risk</text>
+
+    <rect x="800" y="425" width="630" height="220" rx="22" fill="#071121" stroke="#40587e" stroke-width="2"/>
+    <text x="835" y="480" class="panel-title">Why this is not just RAG</text>
+    <text x="835" y="525" class="subtitle cyan">✓ Structured IDP extraction before retrieval</text>
+    <text x="835" y="558" class="subtitle cyan">✓ Deterministic evidence rules for claim checks</text>
+    <text x="835" y="591" class="subtitle cyan">✓ Risk scoring before planner answers</text>
+    <text x="835" y="624" class="subtitle cyan">✓ Row-level evidence and trace tables</text>
+
+    <rect x="800" y="690" width="630" height="205" rx="22" fill="#071121" stroke="#ff4864" stroke-width="2"/>
+    <text x="835" y="745" class="panel-title">Core loop</text>
+    <text x="845" y="792" class="panel-title pink" font-size="28">Extract → Verify → Score</text>
+    <text x="845" y="837" class="panel-title pink" font-size="28">→ Recommend → Plan</text>
+  </g>
 </svg>
