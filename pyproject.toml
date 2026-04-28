@@ -1,0 +1,24 @@
+[project]
+name = "mediroute-ai"
+version = "1.0.0"
+description = "Databricks-ready medical desert intelligence system for healthcare NGOs"
+requires-python = ">=3.10"
+dependencies = [
+    "pandas>=2.0.0",
+    "pydantic>=2.6.0",
+    "streamlit>=1.31.0",
+    "pydeck>=0.8.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+databricks = [
+    "mlflow>=2.10.0",
+    "databricks-sdk>=0.22.0",
+]
+test = [
+    "pytest>=8.0.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]

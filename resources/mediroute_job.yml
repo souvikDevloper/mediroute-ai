@@ -1,0 +1,71 @@
+resources:
+  jobs:
+    mediroute_ai_pipeline:
+      name: MediRoute AI - Databricks Lakehouse Pipeline
+      description: End-to-end IDP, claim verification, medical desert scoring, MLflow tracing, and dashboard export.
+      tasks:
+        - task_key: setup_config
+          notebook_task:
+            notebook_path: ../databricks/notebooks/00_setup_config.py
+            base_parameters:
+              catalog: ${var.catalog}
+              schema: ${var.schema}
+              source_path: ${var.source_path}
+        - task_key: bronze_ingest
+          depends_on:
+            - task_key: setup_config
+          notebook_task:
+            notebook_path: ../databricks/notebooks/01_bronze_ingest_delta.py
+            base_parameters:
+              catalog: ${var.catalog}
+              schema: ${var.schema}
+              source_path: ${var.source_path}
+        - task_key: silver_normalize
+          depends_on:
+            - task_key: bronze_ingest
+          notebook_task:
+            notebook_path: ../databricks/notebooks/02_silver_normalize.py
+            base_parameters:
+              catalog: ${var.catalog}
+              schema: ${var.schema}
+        - task_key: gold_agent_pipeline
+          depends_on:
+            - task_key: silver_normalize
+          notebook_task:
+            notebook_path: ../databricks/notebooks/03_gold_agent_pipeline.py
+            base_parameters:
+              catalog: ${var.catalog}
+              schema: ${var.schema}
+              use_llm: "false"
+        - task_key: mlflow_trace
+          depends_on:
+            - task_key: gold_agent_pipeline
+          notebook_task:
+            notebook_path: ../databricks/notebooks/04_mlflow_agent_trace.py
+            base_parameters:
+              catalog: ${var.catalog}
+              schema: ${var.schema}
+        - task_key: vector_search_prep
+          depends_on:
+            - task_key: gold_agent_pipeline
+          notebook_task:
+            notebook_path: ../databricks/notebooks/05_vector_search_prep.py
+            base_parameters:
+              catalog: ${var.catalog}
+              schema: ${var.schema}
+        - task_key: quality_checks
+          depends_on:
+            - task_key: gold_agent_pipeline
+          notebook_task:
+            notebook_path: ../databricks/notebooks/06_quality_checks.py
+            base_parameters:
+              catalog: ${var.catalog}
+              schema: ${var.schema}
+        - task_key: export_for_app
+          depends_on:
+            - task_key: quality_checks
+          notebook_task:
+            notebook_path: ../databricks/notebooks/07_export_for_app.py
+            base_parameters:
+              catalog: ${var.catalog}
+              schema: ${var.schema}

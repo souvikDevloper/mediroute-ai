@@ -1,0 +1,39 @@
+{
+  "official_facilities_processed": 920,
+  "regions": 17,
+  "high_or_critical_facilities": 34,
+  "weak_claims": 446,
+  "verified_claims": 6,
+  "top_regions": [
+    {
+      "region": "Northern",
+      "risk_score": 68,
+      "risk_level": "High",
+      "suspicious_or_incomplete_claims": 14
+    },
+    {
+      "region": "Volta",
+      "risk_score": 64,
+      "risk_level": "High",
+      "suspicious_or_incomplete_claims": 12
+    },
+    {
+      "region": "Other / Unmapped",
+      "risk_score": 58,
+      "risk_level": "High",
+      "suspicious_or_incomplete_claims": 51
+    },
+    {
+      "region": "Upper West",
+      "risk_score": 57,
+      "risk_level": "High",
+      "suspicious_or_incomplete_claims": 2
+    },
+    {
+      "region": "Greater Accra",
+      "risk_score": 56,
+      "risk_level": "High",
+      "suspicious_or_incomplete_claims": 218
+    }
+  ]
+}

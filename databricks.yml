@@ -1,0 +1,27 @@
+bundle:
+  name: mediroute-ai
+
+include:
+  - resources/*.yml
+
+variables:
+  catalog:
+    description: Unity Catalog catalog for MediRoute AI tables
+    default: main
+  schema:
+    description: Schema/database for MediRoute AI tables
+    default: mediroute_ai
+  source_path:
+    description: CSV path in workspace/dbfs/volume. Example: /Workspace/Users/<you>/mediroute-ai/data/official/virtue_foundation_ghana_v0_3.csv
+    default: data/official/virtue_foundation_ghana_v0_3.csv
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      root_path: ~/.bundle/${bundle.name}/${bundle.target}
+  prod:
+    mode: production
+    workspace:
+      root_path: /Shared/.bundle/${bundle.name}/${bundle.target}
