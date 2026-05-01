@@ -112,6 +112,25 @@ The product produces:
 
 ---
 
+
+---
+
+## Winning upgrades added
+
+MediRoute AI now includes a planner-facing decision layer beyond the base IDP pipeline:
+
+| Upgrade | Why it matters |
+|---|---|
+| **Intervention Priority Board** | Converts evidence into a ranked action queue for NGO planners. |
+| **Intervention Simulator** | Lets planners allocate limited field teams, oxygen kits, surgical teams, imaging units, and lab kits. |
+| **Trust & Evaluation tab** | Shows extraction coverage, verification coverage, weak-claim ratio, RAG document coverage, and quality checks. |
+| **Evidence-first Ask Agent** | Returns priorities, reasons, recommended actions, and row-level evidence instead of generic summaries. |
+| **Databricks SQL Dashboard Pack** | Provides ready-to-use SQL queries for Databricks-native dashboard tiles. |
+
+<p align="center">
+  <img src="assets/github/planner-workflow.png" alt="MediRoute AI planner workflow" width="100%" />
+</p>
+
 ## Databricks architecture
 
 <p align="center">
@@ -162,7 +181,7 @@ MLflow / Delta trace + Streamlit dashboard
 ## Results from the official dataset
 
 <p align="center">
-  <img src="assets/github/metrics.png" alt="MediRoute AI Databricks run metrics" width="100%" />
+  <img src="assets/github/run-results.png" alt="MediRoute AI Databricks run metrics" width="100%" />
 </p>
 
 Databricks run summary:
@@ -185,7 +204,7 @@ Databricks run summary:
 ## Planner workflow
 
 <p align="center">
-  <img src="assets/github/planner-workflow-v2.png" alt="MediRoute AI planner workflow" width="85%" />
+  <img src="assets/github/planner-workflow.png" alt="MediRoute AI planner workflow" width="85%" />
 </p>
 
 Example output style:

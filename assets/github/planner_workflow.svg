@@ -1,0 +1,36 @@
+<svg width="1100" height="720" viewBox="0 0 1100 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#090E18"/><stop offset="1" stop-color="#0D213A"/></linearGradient>
+  <filter id="glow"><feGaussianBlur stdDeviation="35" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <style>
+    .title { font: 800 68px Arial, sans-serif; fill: #fff; }
+    .h1 { font: 800 44px Arial, sans-serif; fill: #fff; }
+    .h2 { font: 700 26px Arial, sans-serif; fill: #fff; }
+    .body { font: 400 21px Arial, sans-serif; fill: #C7D3E4; }
+    .small { font: 400 16px Arial, sans-serif; fill: #AAB8CC; }
+    .mono { font: 600 16px 'Courier New', monospace; fill: #C4E2FF; }
+    .metric { font: 800 42px Arial, sans-serif; fill: #fff; }
+    .label { font: 700 18px Arial, sans-serif; fill: #7EE1FF; }
+  </style>
+</defs>
+<rect width="1100" height="720" fill="url(#bg)"/>
+<circle cx="814" cy="90" r="210" fill="#FF4757" opacity="0.18" filter="url(#glow)"/>
+<circle cx="946" cy="561" r="280" fill="#00C2FF" opacity="0.10" filter="url(#glow)"/>
+<text x="60" y="92" class="h1">Planner workflow</text>
+<text x="62" y="128" class="body">Designed for non-technical NGO healthcare planners</text>
+<rect x="60" y="170" width="440" height="460" rx="28" fill="#0D1524" stroke="#465A82" stroke-width="2"/>
+<text x="92" y="242" class="h2" style="font-size:28px">Ask MediRoute AI</text>
+<rect x="92" y="265" width="376" height="66" rx="18" fill="#182237" stroke="#374664"/>
+<text x="112" y="305" class="small" style="font-size:17px;fill:#E6EEF8">Which facilities need manual verification?</text>
+<rect x="92" y="353" width="376" height="66" rx="18" fill="#182237" stroke="#374664"/>
+<text x="112" y="393" class="small" style="font-size:17px;fill:#E6EEF8">Which areas lack emergency surgical care?</text>
+<rect x="92" y="441" width="376" height="66" rx="18" fill="#182237" stroke="#374664"/>
+<text x="112" y="481" class="small" style="font-size:17px;fill:#E6EEF8">Where should we deploy oxygen support first?</text>
+<line x1="510" y1="400" x2="550" y2="400" stroke="#7EE1FF" stroke-width="5"/><polygon points="550,400 535,390 535,410" fill="#7EE1FF"/>
+<rect x="560" y="170" width="480" height="460" rx="28" fill="#0D1524" stroke="#FF4757" stroke-width="2"/>
+<text x="592" y="242" class="h2" style="font-size:28px">Answer with evidence</text>
+<text x="592" y="286" class="label">Priority</text><text x="592" y="318" class="small" style="font-size:17px;fill:#D7E1EE">High-risk facilities with weak or incomplete claims</text>
+<text x="592" y="372" class="label">Reason</text><text x="592" y="404" class="small" style="font-size:17px;fill:#D7E1EE">Missing support for emergency, surgery, ICU, or imaging evidence</text>
+<text x="592" y="458" class="label">Action</text><text x="592" y="490" class="small" style="font-size:17px;fill:#D7E1EE">Send field verification team before routing doctors/patients</text>
+<text x="592" y="544" class="label">Citations</text><text x="592" y="576" class="small" style="font-size:17px;fill:#D7E1EE">Row-level source evidence and verification trace</text>
+</svg>

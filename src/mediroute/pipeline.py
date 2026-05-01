@@ -72,13 +72,9 @@ def normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
         df["facility_name"] = [f"Facility {i}" for i in df["row_id"]]
     df["facility_name"] = df["facility_name"].map(lambda x: clean_text(x) or "Unknown Facility")
 
-    # Keep facilities as the primary decision-support population. NGOs remain in
-    # the raw CSV and can be uploaded, but medical-desert scoring is facility-led.
-    if "organization_type" in df.columns:
-        mask = df["organization_type"].map(lambda x: clean_text(x).lower() in {"", "facility", "hospital", "clinic", "doctor", "dentist", "pharmacy", "farmacy"})
-        if mask.any():
-            # Preserve original CSV row number for row-level citations.
-            df = df[mask].copy()
+    # Keep every official source row so local results match the Databricks Bronze/Silver/Gold run.
+    # Medical-desert scoring is still facility-led, but retaining all rows preserves citation parity
+    # with the official dataset and Databricks screenshots.
 
     for col in ["address_city", "address_state_or_region", "facility_type_id", "operator_type_id", "source_url", "description"]:
         if col not in df.columns:

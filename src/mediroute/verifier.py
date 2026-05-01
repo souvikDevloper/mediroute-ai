@@ -97,7 +97,7 @@ def verify_facility(row: pd.Series) -> list[VerificationClaim]:
         else:
             status = "Suspicious"
             confidence = round(0.35 + 0.08 * len(present), 2)
-            reason = f"Claim signal exists, but supporting evidence is weak or absent. Missing: {', '.join(missing)}."
+            reason = f"Claim signal exists, but supporting evidence is weak or absent. Expected evidence to verify: {', '.join(missing)}."
 
         claims.append(
             VerificationClaim(
