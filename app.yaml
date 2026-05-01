@@ -1,8 +1,14 @@
-# Databricks Apps-style manifest placeholder.
-# If your workspace has Databricks Apps enabled, use this as the app contract.
-command: ["streamlit", "run", "app/streamlit_app.py", "--server.port", "8000", "--server.address", "0.0.0.0"]
+# app.yaml
+# Databricks Apps manifest for MediRoute AI
+
+command: ["streamlit", "run", "app/streamlit_app.py"]
+
 env:
   - name: MEDIROUTE_DATA_MODE
     value: "csv"
+
   - name: MEDIROUTE_PROCESSED_DIR
     value: "data/processed"
+
+  - name: STREAMLIT_BROWSER_GATHER_USAGE_STATS
+    value: "false"
