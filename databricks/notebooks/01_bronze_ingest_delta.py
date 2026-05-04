@@ -10,9 +10,12 @@
 # COMMAND ----------
 
 try:
-    dbutils.widgets.text("catalog", "main")
+    dbutils.widgets.text("catalog", "workspace")
     dbutils.widgets.text("schema", "mediroute_ai")
-    dbutils.widgets.text("source_path", "data/official/virtue_foundation_ghana_v0_3.csv")
+    dbutils.widgets.text(
+        "source_path",
+        "/Volumes/workspace/mediroute_ai/raw/Virtue Foundation Ghana v0.3 - Sheet1.csv"
+    )
 except Exception:
     pass
 
@@ -20,14 +23,26 @@ catalog = dbutils.widgets.get("catalog")
 schema = dbutils.widgets.get("schema")
 source_path = dbutils.widgets.get("source_path")
 
-spark.sql(f"CREATE SCHEMA IF NOT EXISTS `{catalog}`.`{schema}`")
+# Use selected catalog/schema
 spark.sql(f"USE CATALOG `{catalog}`")
+spark.sql(f"CREATE SCHEMA IF NOT EXISTS `{schema}`")
 spark.sql(f"USE SCHEMA `{schema}`")
 
-# For Databricks Workspace/Volume paths, pass the full path in the widget.
-# For bundle/local sample data, use the default repo-relative path.
-import os
-from pathlib import Path
+import re
+
+def clean_col_name(c):
+    c = str(c).strip().lower()
+    c = re.sub(r"[^a-zA-Z0-9_]", "_", c)   # replace spaces/dots/special chars
+    c = re.sub(r"_+", "_", c)              # collapse repeated underscores
+    c = c.strip("_")
+
+    if not c:
+        c = "col"
+
+    if c[0].isdigit():
+        c = "c_" + c
+
+    return c
 
 candidate_paths = [
     source_path,
@@ -35,9 +50,17 @@ candidate_paths = [
 ]
 
 last_error = None
+
 for p in candidate_paths:
     try:
-        df = spark.read.option("header", True).option("inferSchema", True).csv(p)
+        df = (
+            spark.read
+            .option("header", True)
+            .option("inferSchema", True)
+            .option("multiLine", True)
+            .option("escape", '"')
+            .csv(p)
+        )
         if len(df.columns) > 0:
             break
     except Exception as e:
@@ -45,8 +68,28 @@ for p in candidate_paths:
 else:
     raise RuntimeError(f"Could not read source_path={source_path}. Last error: {last_error}")
 
-df = df.withColumnRenamed(df.columns[0], df.columns[0].strip())
+# Clean all column names for Delta compatibility
+new_cols = []
+seen = {}
+
+for c in df.columns:
+    base = clean_col_name(c)
+
+    if base in seen:
+        seen[base] += 1
+        base = f"{base}_{seen[base]}"
+    else:
+        seen[base] = 0
+
+    new_cols.append(base)
+
+df = df.toDF(*new_cols)
+
+# Save Bronze Delta table
 df.write.mode("overwrite").option("overwriteSchema", True).format("delta").saveAsTable("bronze_facility_raw")
 
-spark.sql("SELECT COUNT(*) AS rows FROM bronze_facility_raw").show()
+print("Bronze table created successfully")
+print(f"Rows loaded: {df.count()}")
+print(f"Columns loaded: {len(df.columns)}")
+
 display(spark.table("bronze_facility_raw").limit(10))

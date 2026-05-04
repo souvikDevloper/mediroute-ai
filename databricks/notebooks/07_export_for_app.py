@@ -6,15 +6,16 @@
 # COMMAND ----------
 
 try:
-    dbutils.widgets.text("catalog", "main")
+    dbutils.widgets.text("catalog", "workspace")
     dbutils.widgets.text("schema", "mediroute_ai")
-    dbutils.widgets.text("export_path", "dbfs:/FileStore/mediroute-ai/processed")
+    dbutils.widgets.text("export_path", "/Volumes/workspace/mediroute_ai/raw/processed")
 except Exception:
     pass
 
 catalog = dbutils.widgets.get("catalog")
 schema = dbutils.widgets.get("schema")
 export_path = dbutils.widgets.get("export_path")
+
 spark.sql(f"USE CATALOG `{catalog}`")
 spark.sql(f"USE SCHEMA `{schema}`")
 
@@ -25,6 +26,9 @@ table_map = {
     "facilities": "gold_facility_risk",
     "regions": "gold_region_risk",
     "gold": "gold_facility_intelligence",
+    "rag_documents": "gold_rag_documents",
+    "quality_summary": "gold_quality_summary",
+    "quality_checks": "gold_quality_checks",
 }
 
 for filename, table in table_map.items():
@@ -32,4 +36,6 @@ for filename, table in table_map.items():
     spark.table(table).coalesce(1).write.mode("overwrite").option("header", True).csv(out)
     print(f"Exported {table} -> {out}")
 
-print("For local demo, download/rename the part files to data/processed/*.csv, or point the app to Databricks SQL in a future deployment.")
+print("Export completed successfully.")
+print(f"Files written under: {export_path}")
+display(dbutils.fs.ls(export_path))

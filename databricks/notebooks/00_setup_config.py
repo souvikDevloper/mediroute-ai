@@ -26,13 +26,13 @@ from pathlib import Path
 try:
     dbutils.widgets.text("catalog", "main")
     dbutils.widgets.text("schema", "mediroute_ai")
-    dbutils.widgets.text("source_path", "data/official/virtue_foundation_ghana_v0_3.csv")
+    dbutils.widgets.text("source_path", "/Volumes/workspace/mediroute_ai/raw/Virtue Foundation Ghana v0.3 - Sheet1.csv")
 except Exception:
     pass
 
 catalog = dbutils.widgets.get("catalog") if "dbutils" in globals() else "main"
 schema = dbutils.widgets.get("schema") if "dbutils" in globals() else "mediroute_ai"
-source_path = dbutils.widgets.get("source_path") if "dbutils" in globals() else "data/official/virtue_foundation_ghana_v0_3.csv"
+source_path = dbutils.widgets.get("source_path") if "dbutils" in globals() else "/Volumes/workspace/mediroute_ai/raw/Virtue Foundation Ghana v0.3 - Sheet1.csv"
 
 spark.sql(f"CREATE CATALOG IF NOT EXISTS `{catalog}`")
 spark.sql(f"CREATE SCHEMA IF NOT EXISTS `{catalog}`.`{schema}`")
